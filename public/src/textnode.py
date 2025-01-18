@@ -16,7 +16,7 @@ class TextNode():
         self.url = url
 
     def __eq__(self, textnode):
-        return self.text == textnode.text and self.text_type == textnode.text_type and self.url == textnode.url
+        return isinstance(textnode, TextNode) and self.text == textnode.text and self.text_type == textnode.text_type and self.url == textnode.url
 
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type.value}, {self.url})" 
