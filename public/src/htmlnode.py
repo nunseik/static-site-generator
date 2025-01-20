@@ -26,3 +26,20 @@ class HTMLNode():
             self.children == other.children and
             self.props == other.props
         )
+    
+class LeafNode(HTMLNode):
+    def __init__(self, tag, value, props=None):
+        super().__init__(tag, value, children=None, props=props)
+
+    def to_html(self):
+        if self.value == None:
+            raise ValueError
+        if self.tag == None:
+            return self.value
+        if self.props:
+            all_props = " " + " ".join(f'{key}="{value}"'
+            for key, value in sorted(self.props.items()))
+        else:
+            all_props = ""
+        return f"<{self.tag}{all_props}>{self.value}</{self.tag}>"
+    
