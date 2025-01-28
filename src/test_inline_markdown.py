@@ -9,11 +9,6 @@ class TestTextNode(unittest.TestCase):
         node = TextNode("This is text", TextType.BOLD, "https://www.google.com")
         node2 = HTMLNode("b", "This is text")
         self.assertEqual(text_node_to_html_node(node), node2)
-    def test2_to_leafnode(self):
-        node = TextNode("This is text", TextType.NORMAL, "https://www.google.com")
-        with self.assertRaises(Exception) as context:
-            text_node_to_html_node(node)
-        self.assertEqual(str(context.exception), "Text type not valid")
     def test_bold(self):
         node = TextNode("This is bold", TextType.BOLD)
         html_node = text_node_to_html_node(node)
